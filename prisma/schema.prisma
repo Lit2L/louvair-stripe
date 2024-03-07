@@ -23,12 +23,13 @@ model Account {
   scope             String?
   id_token          String?  @db.Text
   session_state     String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @default(now()) @updatedAt
+  createdAt         DateTime @default(now()) @map(name: "created_at")
+  updatedAt         DateTime @default(now()) @map(name: "updated_at")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map(name: "accounts")
 }
 
 model Session {
@@ -37,6 +38,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map(name: "sessions")
 }
 
 model User {
@@ -56,6 +59,7 @@ model User {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+  Post                   Post[]
 
   @@map(name: "users")
 }
@@ -66,6 +70,7 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+  @@map(name: "verification_tokens")
 }
 
 model Category {
@@ -113,4 +118,18 @@ model OrderProduct {
   basePrice          Decimal @db.Decimal(8, 2)
   discountPercentage Int     @default(0)
   quantity           Int
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   Json?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+  authorId  String
+
+  author User @relation(fields: [authorId], references: [id])
+
+  @@map(name: "posts")
 }

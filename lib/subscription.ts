@@ -1,63 +1,36 @@
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
-import { pricingData } from "@/config/subscriptions";
-import { prisma } from "@/lib/db";
-import { stripe } from "@/lib/stripe";
-import { UserSubscriptionPlan } from "types";
+import { UserSubscriptionPlan } from 'types'
+import { freePlan, proPlan } from '@/config/subscriptions'
+import { db } from '@/lib/db'
 
-export async function getUserSubscriptionPlan(
-  userId: string
-): Promise<UserSubscriptionPlan> {
-  const user = await prisma.user.findFirst({
+export async function getUserSubscriptionPlan(userId: string): Promise<UserSubscriptionPlan> {
+  const user = await db.user.findFirst({
     where: {
-      id: userId,
+      id: userId
     },
     select: {
       stripeSubscriptionId: true,
       stripeCurrentPeriodEnd: true,
       stripeCustomerId: true,
-      stripePriceId: true,
-    },
+      stripePriceId: true
+    }
   })
 
   if (!user) {
-    throw new Error("User not found")
+    throw new Error('User not found')
   }
 
-  // Check if user is on a paid plan.
-  const isPaid =
-    user.stripePriceId &&
-    user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now() ? true : false;
+  // Check if user is on a pro plan.
+  const isPro =
+    user.stripePriceId && user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now()
 
-  // Find the pricing data corresponding to the user's plan
-  const userPlan =
-    pricingData.find((plan) => plan.stripeIds.monthly === user.stripePriceId) ||
-    pricingData.find((plan) => plan.stripeIds.yearly === user.stripePriceId);
-
-  const plan = isPaid && userPlan ? userPlan : pricingData[0]
-
-  const interval = isPaid
-    ? userPlan?.stripeIds.monthly === user.stripePriceId
-      ? "month"
-      : userPlan?.stripeIds.yearly === user.stripePriceId
-      ? "year"
-      : null
-    : null;
-
-  let isCanceled = false;
-  if (isPaid && user.stripeSubscriptionId) {
-    const stripePlan = await stripe.subscriptions.retrieve(
-      user.stripeSubscriptionId
-    )
-    isCanceled = stripePlan.cancel_at_period_end
-  }
+  const plan = isPro ? proPlan : freePlan
 
   return {
     ...plan,
     ...user,
     stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
-    isPaid,
-    interval,
-    isCanceled
+    isPro
   }
 }

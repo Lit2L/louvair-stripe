@@ -1,13 +1,17 @@
-import "@/styles/globals.css";
+import BurgerNav from '@/components/layout/BurgerNav'
+import '../styles/globals.css'
+import '../styles/shared.css'
 
-import { fontHeading, fontSans, fontUrban } from "@/assets/fonts";
-import { Analytics } from "@/components/analytics";
-import { ModalProvider } from "@/components/modal-provider";
-import { ThemeProvider } from "@/components/providers";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { Toaster } from "@/components/ui/toaster";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import { ThemeProvider } from '@/components/theme-provider'
+// import { Analytics } from '@/components/analytics'
+import { ModalProvider } from '@/components/modal-provider'
+import { ThemeSwitcher } from '@/components/theme-switcher'
+
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { Toaster } from '@/components/ui/toaster'
+import { siteConfig } from '@/config/site'
+
+import { Syncopate } from 'next/font/google'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -16,66 +20,63 @@ interface RootLayoutProps {
 export const metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Prisma",
-    "PlanetScale",
-    "Auth.js",
-    "shadcn ui",
-    "Resend",
-    "React Email",
-    "Stripe"
-  ],
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Fragrance', 'Business', 'Oils', 'Ecommerce', 'Subscription'],
+
   authors: [
     {
-      name: "mickasmt",
-    },
+      name: 'li2l'
+    }
   ],
-  creator: "mickasmt",
+  creator: 'li2l',
   metadataBase: new URL(siteConfig.url),
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: siteConfig.name
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@miickasmt",
+    creator: '@li2l'
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png'
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: `${siteConfig.url}/site.webmanifest`
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+const syncopate = Syncopate({
+  weight: ['400', '700'],
+  style: ['normal'],
+  subsets: ['latin'],
+  variable: '--font-syncopate'
+})
 
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontUrban.variable,
-          fontHeading.variable
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body className={syncopate.className}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <BurgerNav />
           {children}
-          <Analytics />
+          {/* <Analytics /> */}
           <Toaster />
           <ModalProvider />
           <TailwindIndicator />

@@ -1,36 +1,36 @@
-"use server";
+'use server'
 
-import { auth } from "@/auth";
-import { stripe } from "@/lib/stripe";
-import { getUserSubscriptionPlan } from "@/lib/subscription";
-import { absoluteUrl } from "@/lib/utils";
-import { redirect } from "next/navigation";
+import { stripe } from '@/lib/stripe'
+import { getUserSubscriptionPlan } from '@/lib/subscription'
+import { absoluteUrl } from '@/lib/utils'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 
 export type responseAction = {
-  status: "success" | "error";
-  stripeUrl?: string;
+  status: 'success' | 'error'
+  stripeUrl?: string
 }
 
 // const billingUrl = absoluteUrl("/dashboard/billing")
-const billingUrl = absoluteUrl("/pricing")
+const billingUrl = absoluteUrl('/pricing')
 
 export async function generateUserStripe(priceId: string): Promise<responseAction> {
-  let redirectUrl: string = "";
+  let redirectUrl: string = ''
 
   try {
-    const session = await auth()
+    const session = await getServerSession()
 
     if (!session?.user || !session?.user.email) {
-      throw new Error("Unauthorized");
+      throw new Error('Unauthorized')
     }
 
     const subscriptionPlan = await getUserSubscriptionPlan(session.user.id)
 
-    if (subscriptionPlan.isPaid && subscriptionPlan.stripeCustomerId) {
+    if (subscriptionPlan.isPro && subscriptionPlan.stripeCustomerId) {
       // User on Paid Plan - Create a portal session to manage subscription.
       const stripeSession = await stripe.billingPortal.sessions.create({
         customer: subscriptionPlan.stripeCustomerId,
-        return_url: billingUrl,
+        return_url: billingUrl
       })
 
       redirectUrl = stripeSession.url as string
@@ -39,25 +39,25 @@ export async function generateUserStripe(priceId: string): Promise<responseActio
       const stripeSession = await stripe.checkout.sessions.create({
         success_url: billingUrl,
         cancel_url: billingUrl,
-        payment_method_types: ["card"],
-        mode: "subscription",
-        billing_address_collection: "auto",
+        payment_method_types: ['card'],
+        mode: 'subscription',
+        billing_address_collection: 'auto',
         customer_email: session.user.email,
         line_items: [
           {
             price: priceId,
-            quantity: 1,
-          },
+            quantity: 1
+          }
         ],
         metadata: {
-          userId: session.user.id,
-        },
+          userId: session.user.id
+        }
       })
 
       redirectUrl = stripeSession.url as string
     }
   } catch (error) {
-    throw new Error("Failed to generate user stripe session");
+    throw new Error('Failed to generate user stripe session')
   }
 
   // no revalidatePath because redirect
