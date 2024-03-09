@@ -28,8 +28,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setLoadingVisible }) => {
 
       //container transition
       if (container.current) {
-        container.current.style.clipPath =
-          'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
+        container.current.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)'
       }
 
       //update container visibility
@@ -40,10 +39,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setLoadingVisible }) => {
   }, [setLoadingVisible])
 
   return (
-    <div
-      className='loading-container center loading-transition'
-      ref={container}
-    >
+    <div className='loading-container center loading-transition' ref={container}>
       <svg
         viewBox='0 0 108 106'
         className='loading-transition'

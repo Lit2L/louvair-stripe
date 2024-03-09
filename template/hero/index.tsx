@@ -1,11 +1,16 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import './Hero.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import { useRef, useEffect } from 'react'
+import HeroImage from '../../public/home/hero.jpeg'
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { siteConfig } from '@/config/site'
+import { ChevronLeft } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -77,7 +82,7 @@ function Hero() {
         }
       })
     }, 2300)
-  }, [])
+  }, [topSpans, headings])
 
   // Scroll Parallax
   useEffect(() => {
@@ -93,54 +98,57 @@ function Hero() {
       })
     }
   }, [])
+
   return (
-    <div
-      id='hero-container'
-      className='border-4 w-full min-h-screen overflow-hidden  relative flex flex-col justify-center text-white'
-    >
-      <div className='mb-16 hidden sm:block p-[5vw] smooth-transition'>
+    <div id='hero-container' className=' smooth-transition'>
+      <div className='hidden sm:block p-[5vw] '>
         <p className='text-xs font-semibold '>
           Lorem ipsum dolor sit amet consectetur
           <br /> possimus veniam asperiores pariatur
           <br />
-          dolorem nisi architecto, explicabo necessit
         </p>
       </div>
       <div className='w-full'>
         <div className='hero-background loading-transition' ref={backgroundWrapper}>
-          <Image fill src='/hero.webp' alt=' hero' ref={backgroundImage} className='hero-image' />
+          <Image fill src={HeroImage} alt=' hero' ref={backgroundImage} className='hero-image' />
         </div>
 
-        <div className='h-[60vh] flex flex-col justify-between  items-center sm:items-start p-[5vw] smooth-transition'>
-          <div className=''>
-            <p
-              className='font-syncopate text-6xl sm:text-7xl md:text-8xl lg:text-9xl smooth-transition'
-              ref={headings[0]}
-            >
-              L'ouvair
-            </p>
-          </div>
-          <div className='font-syncopate flex flex-col items-center mt-12 sm:items-start'>
-            <p
-              ref={headings[1]}
-              className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl smooth-transition'
-            >
-              Air
-            </p>
+        <div className='content'>
+          <h1 className=''>
+            <div className=''>
+              <p className='text-center w-full font-syncopate anim' ref={headings[0]}>
+                L&apos;ouvair
+              </p>
+            </div>
 
-            <p
-              ref={headings[2]}
-              className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter  mt-3 smooth-transition'
-            >
-              Ambience
-            </p>
-          </div>
-          <div className='flex w-full justify-evenly gap-6 px-6'>
-            <Button className='py-2 w-full flex justify-center items-center text-xs whitespace-nowrap'>
-              Explore Now
-            </Button>
-            <Button className='py-2 w-full flex justify-center items-center text-xs'>Start</Button>
-          </div>
+            <div className='w-full text-center text-3xl py-10'>
+              <p ref={headings[1]} className=''>
+                Air
+              </p>
+
+              <p ref={headings[2]} className=''>
+                Ambience
+              </p>
+            </div>
+          </h1>
+        </div>
+        <div className='flex flex-col items-center w-full gap-10  h-full '>
+          <Link
+            href='/register'
+            className={cn(
+              'flex items-center w-72 justify-center',
+              buttonVariants({ variant: 'secondary', size: 'sm' })
+            )}
+          >
+            Get Started Today!
+          </Link>
+
+          <Link
+            href='/login'
+            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64 ')}
+          >
+            Visit Store
+          </Link>
         </div>
       </div>
     </div>

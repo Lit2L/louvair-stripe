@@ -3,6 +3,7 @@
 import './Work.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Image from 'next/image'
 import { useRef, useEffect } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -103,11 +104,11 @@ const Work: React.FC = () => {
       <div className='row'>
         <div
           id='block-0'
-          className='block'
+          className='block px-3'
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img
+          <Image
             src='/work/greenyellow.jpeg'
             height='3113'
             width='500'
@@ -132,7 +133,7 @@ const Work: React.FC = () => {
               <span>
                 <strong>Ali Ali - </strong>
               </span>
-              <span>Unique director's portfolio</span>
+              <span>Unique director&apos;s portfolio</span>
             </p>
           </div>
         </div>
@@ -246,7 +247,7 @@ const Work: React.FC = () => {
               <span>
                 <strong>{'Rino & Pelle - '}</strong>
               </span>
-              <span>Unique director's portfolio</span>
+              <span>Unique atmospheric&apos;s point of view</span>
             </p>
           </div>
         </div>

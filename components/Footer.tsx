@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Louvair from '../public/assets/LogoWhite.png'
-import LarryLogo from '../public/assets/LarryLogo.png'
-import GitHub from '@/components/icons/GitHub'
 import Image from 'next/image'
+import { ThemeToggleButton } from './theme-toggle-button'
 
 export default function Footer() {
   return (
@@ -13,7 +12,8 @@ export default function Footer() {
             <span className='mr-2 border rounded-full border-zinc-700'>
               <Image src={Louvair} alt='Louvair Logo' width={40} height={40} />
             </span>
-            <span>L&apos;ouvair</span>
+            <span className='font-bold text-xl'>L&apos;</span>
+            <span className='text-sm font-bold'>ouvair</span>
           </Link>
         </div>
         <div className='col-span-1 lg:col-span-2'>
@@ -77,30 +77,22 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className='flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end'>
-          <div className='flex items-center h-10 space-x-6'>
-            <a
-              aria-label='Github Repository'
-              href='https://github.com/vercel/nextjs-subscription-payments'
-            >
-              <GitHub />
-            </a>
-          </div>
-        </div>
       </div>
       <div className='flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-zinc-900'>
         <div>
-          <span>&copy; {new Date().getFullYear()} litl, Inc. All rights reserved.</span>
+          <span className='text-xs'>
+            &copy; {new Date().getFullYear()} Louvair, Inc. All rights reserved.
+          </span>
         </div>
         <div className='flex items-center'>
-          <span className='text-white'>Crafted by</span>
-          <a href='https://vercel.com' aria-label='Vercel.com Link'>
+          <span className='text-white text-xs px-3'>Crafted by</span>
+          <a href='https://vercel.com' aria-label='Logo Link'>
             <Image
-              src={LarryLogo}
-              height={56}
-              width={56}
+              src={Louvair}
+              height={20}
+              width={20}
               alt='Vercel.com Logo'
-              className='inline-block h-6 ml-4 text-white'
+              className='shadow-xl '
             />
           </a>
         </div>

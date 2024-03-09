@@ -14,9 +14,16 @@ body {
   left: 0;
 } */
 
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300 !important;
+}
+
 h1 {
-  font-size: 17.36111vw;
-  line-height: 16vw;
+  font-size: 10vw;
+  line-height: 11vw;
   font-weight: 700 !important;
 }
 
@@ -40,12 +47,11 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: brown;
 }
 
-.anim {
+/* .anim {
   overflow: hidden;
-}
+} */
 
 .row {
   display: flex;
@@ -57,37 +63,10 @@ h2 {
   flex-direction: column;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-html,
-body {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.red-hover {
-  @apply hover:text-red-900 hover:cursor-pointer hover:duration-300 ease-in-out;
-}
-
-.instagram-gradient {
-  @apply bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045];
-}
-
-.facebook-gradient {
-  @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff];
-}
-
-.youtube-gradient {
-  @apply bg-gradient-to-r from-[#e52d27] to-[#b31217];
-}
-
-.social-media-icon {
-  @apply rounded-full hover:py-3 cursor-pointer hover:bg-neutral-500 duration-300 hover:text-black;
+.parent {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }

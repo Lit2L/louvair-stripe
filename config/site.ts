@@ -12,6 +12,6 @@ export const siteConfig: SiteConfig = {
   links: {
     twitter: 'https://twitter.com/miickasmt',
     github: 'https://github.com/mickasmt/next-saas-stripe-starter'
-  },
-  mailSupport: 'support@saas-starter.com'
+  }
+  // mailSupport: 'support@saas-starter.com'
 }

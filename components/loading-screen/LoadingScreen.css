@@ -18,10 +18,11 @@
   position: absolute;
   top: 0;
   z-index: 999;
-  transform-origin: right center;
-  height: calc(100% + 250px);
+  transform-origin: center;
+  height: calc(100% + 50px);
   padding-bottom: 250px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 250px));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  border: 5px solid #0d0e13;
 }
 
 .loading-transition {

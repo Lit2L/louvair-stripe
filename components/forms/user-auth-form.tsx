@@ -15,13 +15,11 @@ import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
 import { Icons } from '@/components/shared/icons'
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  type?: string
-}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 type FormData = z.infer<typeof userAuthSchema>
 
-export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
+export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const {
     register,
     handleSubmit,
@@ -59,11 +57,17 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
     })
   }
 
+  const googleSignIn = async () => {
+    setIsGoogleLoading(true)
+    const signInResult = await signIn('google', {
+      callbackUrl: searchParams?.get('from') || '/dashboard'
+    })
+  }
   return (
     <div className={cn('grid gap-6', className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='grid gap-2'>
-          <div className='grid gap-1'>
+        <div className='grid gap-6'>
+          <div className='grid'>
             <Label className='sr-only' htmlFor='email'>
               Email
             </Label>
@@ -80,8 +84,8 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
             {errors?.email && <p className='px-1 text-xs text-red-600'>{errors.email.message}</p>}
           </div>
           <button className={cn(buttonVariants())} disabled={isLoading}>
-            {isLoading && <Icons.spinner className='mr-2 size-4 animate-spin' />}
-            {type === 'register' ? 'Sign Up with Email' : 'Sign In with Email'}
+            {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+            Sign In with Email
           </button>
         </div>
       </form>
@@ -89,7 +93,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
         <div className='absolute inset-0 flex items-center'>
           <span className='w-full border-t' />
         </div>
-        <div className='relative flex justify-center text-xs uppercase'>
+        <div className='relative gradient  flex justify-center text-xs uppercase'>
           <span className='bg-background px-2 text-muted-foreground'>Or continue with</span>
         </div>
       </div>

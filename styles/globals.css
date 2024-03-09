@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 0 0% 91%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 222.2 47.4% 11.2%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
@@ -28,13 +28,13 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
   }
-
   .dark {
     --background: 0 10% 50.9%;
     --foreground: 0 0% 98%;
@@ -60,9 +60,9 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -76,11 +76,11 @@
 }
 
 .smooth-transition {
-  @apply transition-all duration-500 ease-in-out;
+  @apply transition-all duration-300 ease-in-out;
 }
 
 .red-hover {
-  @apply hover:text-red-900 hover:cursor-pointer hover:duration-300 ease-in-out;
+  @apply hover:text-red-900 cursor-pointer hover:duration-300 transition-all hover:scale-95;
 }
 
 .instagram-gradient {
@@ -97,4 +97,8 @@
 
 .social-media-icon {
   @apply rounded-full hover:py-3 cursor-pointer hover:bg-neutral-500 duration-300 hover:text-black;
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-[#b8bcc8]/90 via-[#6b4554]/90 to-[#4c4a57]/90;
 }

@@ -5,8 +5,8 @@ import '../styles/shared.css'
 import { ThemeProvider } from '@/components/theme-provider'
 // import { Analytics } from '@/components/analytics'
 import { ModalProvider } from '@/components/modal-provider'
-import { ThemeSwitcher } from '@/components/theme-switcher'
-
+import { ThemeToggleButton } from '@/components/theme-toggle-button'
+import { User } from 'next-auth'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/config/site'
@@ -15,6 +15,10 @@ import { Syncopate } from 'next/font/google'
 
 interface RootLayoutProps {
   children: React.ReactNode
+}
+
+type BurgerNavProps = {
+  user: Pick<User, 'name' | 'email' | 'image'>
 }
 
 export const metadata = {
@@ -68,14 +72,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <html lang='en' suppressHydrationWarning>
       <head />
       <body className={syncopate.className}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
           <BurgerNav />
-          {children}
+          <main className=''>{children}</main>
           {/* <Analytics /> */}
           <Toaster />
           <ModalProvider />
