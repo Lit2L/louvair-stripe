@@ -49,8 +49,8 @@ export default async function BillingPage() {
               <CardHeader>
                 <CardTitle className='font-vietnam font-thin'>Test Card</CardTitle>
               </CardHeader>
-              <CardContent className='font-vietnam font-thin text-[16px]'>
-                Card Number `4242 4242 4242 4242`
+              <CardContent className='font-vietnam font-thin text-lg'>
+                Test Number `4242 4242 4242 4242`
                 <CardDescription>
                   <br /> Exp. `04/24` CVC `242`.
                 </CardDescription>

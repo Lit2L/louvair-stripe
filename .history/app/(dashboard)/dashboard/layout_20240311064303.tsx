@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 import { dashboardConfig } from '@/config/dashboard'
 import { getServerSession } from 'next-auth'
@@ -7,18 +7,16 @@ import { DashboardNav } from '@/components/nav'
 import { SiteFooter } from '@/components/site-footer'
 import { UserAccountNav } from '@/components/layout/user-account-nav'
 import { getCurrentUser } from '@/lib/session'
-import { authOptions } from '@/lib/auth'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  // const user = await getCurrentUser()
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    return notFound()
   }
 
   return (
@@ -26,13 +24,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <header className='sticky top-0 z-40 border-b bg-background'>
         <div className='container flex h-16 items-center justify-between py-4'>
           <MainNav items={dashboardConfig.mainNav} />
-          <UserAccountNav
-            user={{
-              name: user.name,
-              image: user.image,
-              email: user.email
-            }}
-          />
+          <UserAccountNav user={user} />
         </div>
       </header>
       <div className='container grid flex-1 gap-12 md:grid-cols-[200px_1fr]'>

@@ -45,12 +45,12 @@ export default async function BillingPage() {
           <AlertDescription>
             Louvair app is in TEST Mode using a Stripe test environment. Complete order with <br />{' '}
             <br />
-            <Card className='bg-neutral-800/50 w-[340px]'>
+            <Card className='bg-neutral-800/50 gradient'>
               <CardHeader>
-                <CardTitle className='font-vietnam font-thin'>Test Card</CardTitle>
+                <CardTitle>Test Card</CardTitle>
               </CardHeader>
-              <CardContent className='font-vietnam font-thin text-[16px]'>
-                Card Number `4242 4242 4242 4242`
+              <CardContent>
+                Test Card Number `4242 4242 4242 4242`
                 <CardDescription>
                   <br /> Exp. `04/24` CVC `242`.
                 </CardDescription>

@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 import { dashboardConfig } from '@/config/dashboard'
 import { getServerSession } from 'next-auth'
@@ -7,18 +7,16 @@ import { DashboardNav } from '@/components/nav'
 import { SiteFooter } from '@/components/site-footer'
 import { UserAccountNav } from '@/components/layout/user-account-nav'
 import { getCurrentUser } from '@/lib/session'
-import { authOptions } from '@/lib/auth'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  // const user = await getCurrentUser()
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    return notFound()
   }
 
   return (

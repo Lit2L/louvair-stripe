@@ -8,7 +8,7 @@ import { BillingForm } from '@/components/forms/billing-form'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Icons } from '@/components/shared/icons'
 import { DashboardShell } from '@/components/dashboard/shell'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata = {
   title: 'Billing',
@@ -45,16 +45,13 @@ export default async function BillingPage() {
           <AlertDescription>
             Louvair app is in TEST Mode using a Stripe test environment. Complete order with <br />{' '}
             <br />
-            <Card className='bg-neutral-800/50 w-[340px]'>
+            <Card>
               <CardHeader>
-                <CardTitle className='font-vietnam font-thin'>Test Card</CardTitle>
+                <CardTitle>Test Card</CardTitle>
               </CardHeader>
-              <CardContent className='font-vietnam font-thin text-[16px]'>
-                Card Number `4242 4242 4242 4242`
-                <CardDescription>
-                  <br /> Exp. `04/24` CVC `242`.
-                </CardDescription>
-              </CardContent>
+              Test Card Number `4242 4242 4242 4242`
+              <br /> Exp. `04/24` <br />
+              CVC `242`.
             </Card>
             <br />
             <a
