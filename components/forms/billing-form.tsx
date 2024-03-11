@@ -25,7 +25,7 @@ interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
 export function BillingForm({ subscriptionPlan, className, ...props }: BillingFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent) {
     event.preventDefault()
     setIsLoading(!isLoading)
 
@@ -50,7 +50,11 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
   }
 
   return (
-    <form className={cn(className)} onSubmit={onSubmit} {...props}>
+    <form
+      className={cn(className)}
+      onSubmit={onSubmit}
+      {...props}
+    >
       <Card>
         <CardHeader>
           <CardTitle className='font-vietnam text-4xl tracking-wide '>Subscription Plan</CardTitle>
@@ -60,7 +64,11 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
         </CardHeader>
         <CardContent>{subscriptionPlan.description}</CardContent>
         <CardFooter className='flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0'>
-          <button type='submit' className={cn(buttonVariants())} disabled={isLoading}>
+          <button
+            type='submit'
+            className={cn(buttonVariants())}
+            disabled={isLoading}
+          >
             {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
             {subscriptionPlan.isPro ? 'Manage Subscription' : 'Upgrade to PRO'}
           </button>

@@ -100,9 +100,17 @@ const Work: React.FC = () => {
   }
 
   return (
-    <section className='column content-width overflow-auto' id='work-section'>
-      <div className='anim justify-end flex w-full border-4'>
-        <h1 ref={heading}>Play</h1>
+    <section
+      className='column content-width overflow-auto'
+      id='work-section'
+    >
+      <div className='anim justify-end flex w-full'>
+        <h1
+          className='text-5xl font-bold'
+          ref={heading}
+        >
+          Playtime
+        </h1>
       </div>
       <div className='row'>
         <div
@@ -140,7 +148,10 @@ const Work: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className='column' id='work-right-section'>
+        <div
+          className='column'
+          id='work-right-section'
+        >
           <div className='row'>
             <svg
               viewBox='0 0 12 12'
@@ -164,12 +175,17 @@ const Work: React.FC = () => {
           </p>
           <div
             id='block-1'
-            className='block'
+            className='block p-3'
             ref={image1}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <img src='/work/black.jpeg' />
+            <Image
+              alt='image play'
+              src='/work/black.jpeg'
+              height='3113'
+              width='500'
+            />
             <video
               playsInline={true}
               loop={true}
@@ -202,7 +218,12 @@ const Work: React.FC = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img src='/work/blue.jpeg' />
+          <Image
+            src='/work/blue.jpeg'
+            alt='play image'
+            height={600}
+            width={300}
+          />
           <video
             playsInline={true}
             loop={true}

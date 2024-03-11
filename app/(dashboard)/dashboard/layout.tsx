@@ -1,17 +1,19 @@
 import { notFound } from 'next/navigation'
 
-import { DashboardNav } from '@/components/layout/nav'
-import { NavBar } from '@/components/layout/navbar'
-import { SiteFooter } from '@/components/layout/site-footer'
 import { dashboardConfig } from '@/config/dashboard'
-import { getCurrentUser } from '@/lib/session'
+import { getServerSession } from 'next-auth'
+import { MainNav } from '@/components/main-nav'
+import { DashboardNav } from '@/components/nav'
+import { SiteFooter } from '@/components/site-footer'
+import { UserAccountNav } from '@/components/user-account-nav'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  const user = await getCurrentUser()
+  const session = await getServerSession()
+  const user = session?.user
 
   if (!user) {
     return notFound()
@@ -19,8 +21,12 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
 
   return (
     <div className='flex min-h-screen flex-col space-y-6'>
-      <NavBar user={user} items={dashboardConfig.mainNav} scroll={false} />
-
+      <header className='sticky top-0 z-40 border-b bg-background'>
+        <div className='container flex h-16 items-center justify-between py-4'>
+          <MainNav items={dashboardConfig.mainNav} />
+          <UserAccountNav user={user} />
+        </div>
+      </header>
       <div className='container grid flex-1 gap-12 md:grid-cols-[200px_1fr]'>
         <aside className='hidden w-[200px] flex-col md:flex'>
           <DashboardNav items={dashboardConfig.sidebarNav} />

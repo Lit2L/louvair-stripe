@@ -55,7 +55,7 @@
 }
 
 .red-hover {
-  @apply hover:text-red-900 hover:scale-95 duration-300 delay-75;
+  @apply hover:text-red-900 hover:scale-95 duration-300;
 }
 
 .header {

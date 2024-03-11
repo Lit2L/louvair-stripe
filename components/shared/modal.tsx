@@ -18,7 +18,10 @@ export function Modal({ children, className, showModal, setShowModal }: ModalPro
 
   if (isMobile) {
     return (
-      <Drawer.Root open={showModal} onClose={setShowModal}>
+      <Drawer.Root
+        open={showModal}
+        onClose={setShowModal}
+      >
         <Drawer.Overlay
           className='fixed inset-0 z-40 bg-background/80 backdrop-blur-sm'
           onClick={setShowModal}
@@ -41,7 +44,10 @@ export function Modal({ children, className, showModal, setShowModal }: ModalPro
     )
   }
   return (
-    <Dialog open={showModal} onOpenChange={setShowModal}>
+    <Dialog
+      open={showModal}
+      onOpenChange={setShowModal}
+    >
       <DialogContent className='overflow-hidden p-0 md:max-w-md md:rounded-2xl md:border'>
         {children}
       </DialogContent>

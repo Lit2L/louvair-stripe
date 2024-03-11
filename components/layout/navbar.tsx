@@ -1,7 +1,7 @@
 'use client'
 
 import useScroll from '@/hooks/use-scroll'
-import { MainNavItem } from '@/types/'
+import { MainNavItem } from 'types'
 import { User } from 'next-auth'
 import { MainNav } from './main-nav'
 import { UserAccountNav } from './user-account-nav'

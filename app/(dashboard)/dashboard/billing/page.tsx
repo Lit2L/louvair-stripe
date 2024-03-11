@@ -1,14 +1,13 @@
 import { redirect } from 'next/navigation'
-
+import { authOptions } from '@/lib/auth'
 import { getCurrentUser } from '@/lib/session'
+import { stripe } from '@/lib/stripe'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { BillingForm } from '@/components/forms/billing-form'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Icons } from '@/components/shared/icons'
 import { DashboardShell } from '@/components/dashboard/shell'
-import { authOptions } from '@/lib/auth'
-import { stripe } from '@/lib/stripe'
 
 export const metadata = {
   title: 'Billing',
@@ -17,6 +16,7 @@ export const metadata = {
 
 export default async function BillingPage() {
   const user = await getCurrentUser()
+  console.log('user from billing page', user)
 
   if (!user) {
     redirect(authOptions?.pages?.signIn || '/login')
@@ -33,7 +33,10 @@ export default async function BillingPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading='Billing' text='Manage billing and your subscription plan.' />
+      <DashboardHeader
+        heading='Billing'
+        text='Manage billing and your subscription plan.'
+      />
       <div className='grid gap-8'>
         <Alert className='!pl-14'>
           <Icons.warning />

@@ -32,11 +32,17 @@ export default function RegisterPage() {
 
           <p className='px-8 text-center text-sm text-muted-foreground'>
             By clicking continue, you agree to our{' '}
-            <Link href='/terms' className='hover:text-brand underline underline-offset-4'>
+            <Link
+              href='/terms'
+              className='hover:text-brand underline underline-offset-4'
+            >
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href='/privacy' className='hover:text-brand underline underline-offset-4'>
+            <Link
+              href='/privacy'
+              className='hover:text-brand underline underline-offset-4'
+            >
               Privacy Policy
             </Link>
             .
@@ -50,7 +56,10 @@ export default function RegisterPage() {
             <a href='/login'>
               <span className='text-center justify-center font-thin tracking-wide h-full w-full flex items-center hover:underline '>
                 Continue to Login
-                <ChevronRight className='ml-2' size={30} />
+                <ChevronRight
+                  className='ml-2'
+                  size={30}
+                />
               </span>
             </a>
           </Button>

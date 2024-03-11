@@ -58,11 +58,17 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }
 
   return (
-    <div className={cn('grid gap-6', className)} {...props}>
+    <div
+      className={cn('grid gap-6', className)}
+      {...props}
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='grid gap-2'>
           <div className='grid gap-1'>
-            <Label className='sr-only' htmlFor='email'>
+            <Label
+              className='sr-only'
+              htmlFor='email'
+            >
               Email
             </Label>
             <Input
@@ -77,7 +83,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             />
             {errors?.email && <p className='px-1 text-xs text-red-600'>{errors.email.message}</p>}
           </div>
-          <button className={cn(buttonVariants())} disabled={isLoading}>
+          <button
+            className={cn(buttonVariants())}
+            disabled={isLoading || true}
+          >
             {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
             Sign In with Email
           </button>

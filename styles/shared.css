@@ -2,17 +2,12 @@ body {
   text-size-adjust: 100%;
   text-rendering: optimizeSpeed;
   min-height: 100vh;
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
   scroll-behavior: smooth;
   overscroll-behavior: none;
   overflow: hidden;
 }
-
-/* #root {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-} */
 
 .icon {
   height: 16px;

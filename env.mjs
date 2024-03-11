@@ -12,6 +12,7 @@ export const env = createEnv({
     DATABASE_URL: z.string().min(1),
     STRIPE_API_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
+    STRIPE_PUBLISHABLE_KEY: z.string().min(1),
     STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1)
   },
   client: {
@@ -24,6 +25,7 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
     STRIPE_API_KEY: process.env.STRIPE_API_KEY,
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     STRIPE_PRO_MONTHLY_PLAN_ID: process.env.STRIPE_PRO_MONTHLY_PLAN_ID,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL
