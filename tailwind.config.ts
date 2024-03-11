@@ -23,6 +23,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        themeblue: 'hsl(var(--themeblue))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -63,7 +64,8 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
-        syncopate: ['Syncopate', 'sans-serif']
+        syncopate: ['Syncopate', 'sans-serif'],
+        vietnam: ['Be Vietnam Pro', 'sans-serif']
       },
       keyframes: {
         'accordion-down': {

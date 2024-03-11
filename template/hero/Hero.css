@@ -57,3 +57,17 @@
 .red-hover {
   @apply hover:text-red-900 hover:scale-95 duration-300 delay-75;
 }
+
+.header {
+  font-family: 'Syncopate', sans-serif;
+  font-size: 10vw;
+  line-height: 11vw;
+  font-weight: 700 !important;
+}
+
+.sub-header {
+  font-family: 'Syncopate', sans-serif;
+  font-size: 5vw;
+  line-height: 6vw;
+  font-weight: 700 !important;
+}

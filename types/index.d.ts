@@ -33,8 +33,8 @@ export type SiteConfig = {
   url: string
   ogImage: string
   links: {
-    twitter: string
-    github: string
+    facebook: string
+    instagram: string
   }
 }
 
@@ -56,12 +56,6 @@ export type SubscriptionPlan = {
   name: string
   description: string
   stripePriceId: string
-  benefits: string[]
-  price?: number
-  prices: {
-    monthly?: number
-    yearly?: number
-  }
 }
 
 export type UserSubscriptionPlan = SubscriptionPlan &

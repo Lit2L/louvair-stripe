@@ -58,7 +58,10 @@ const Work: React.FC = () => {
     // play video
     const target = event.currentTarget
     const video = target.querySelector('.video') as HTMLVideoElement
-    if (video) video.play()
+    const playPromise = video.play()
+    if (video) {
+      playPromise
+    }
 
     // animation
     const text = target.querySelector('.text-wrapper > p > span') as HTMLSpanElement

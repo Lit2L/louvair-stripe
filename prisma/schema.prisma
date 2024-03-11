@@ -23,13 +23,12 @@ model Account {
   scope             String?
   id_token          String?  @db.Text
   session_state     String?
-  createdAt         DateTime @default(now()) @map(name: "created_at")
-  updatedAt         DateTime @default(now()) @map(name: "updated_at")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-  @@map(name: "accounts")
 }
 
 model Session {
@@ -38,8 +37,6 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map(name: "sessions")
 }
 
 model User {
@@ -48,20 +45,17 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
 
   accounts Account[]
   sessions Session[]
-  Order    Order[]
+  orders   Order[]
 
-  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
-  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
-  stripePriceId          String?   @map(name: "stripe_price_id")
-  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
-  Post                   Post[]
-
-  @@map(name: "users")
+  stripeCustomerId       String?
+  stripeSubscriptionId   String?
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
 }
 
 model VerificationToken {
@@ -70,66 +64,32 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-  @@map(name: "verification_tokens")
-}
-
-model Category {
-  id       String    @id @default(uuid())
-  name     String
-  slug     String
-  imageUrl String
-  products Product[]
 }
 
 model Product {
-  id                 String         @id @default(uuid())
-  name               String
-  slug               String
-  description        String
-  basePrice          Decimal        @db.Decimal(8, 2)
-  imageUrls          String[]
-  categoryId         String
-  category           Category       @relation(fields: [categoryId], references: [id])
-  discountPercentage Int            @default(0)
-  OrderProduct       OrderProduct[]
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  unit_amount Float
+  image       String?
+  quantity    Float   @default(0)
+  // 👇🏻 One-to-many relationship
+  orders      Order[]
 }
 
 model Order {
-  id            String         @id @default(uuid())
-  userId        String
-  user          User           @relation(fields: [userId], references: [id])
-  orderProducts OrderProduct[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @default(now()) @updatedAt
-  status        OrderStatus    @default(WAITING_FOR_PAYMENT)
+  id              String    @id @default(uuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  amount          Float
+  currency        String
+  createdDate     DateTime  @default(now())
+  status          String
+  paymentIntentID String?   @unique
+  products        Product[]
 }
 
 enum OrderStatus {
-  WAITING_FOR_PAYMENT
-  PAYMENT_CONFIRMED
-}
-
-model OrderProduct {
-  id                 String  @id @default(uuid())
-  productId          String
-  product            Product @relation(fields: [productId], references: [id])
-  orderId            String
-  order              Order   @relation(fields: [orderId], references: [id])
-  basePrice          Decimal @db.Decimal(8, 2)
-  discountPercentage Int     @default(0)
-  quantity           Int
-}
-
-model Post {
-  id        String   @id @default(cuid())
-  title     String
-  content   Json?
-  published Boolean  @default(false)
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @default(now()) @map(name: "updated_at")
-  authorId  String
-
-  author User @relation(fields: [authorId], references: [id])
-
-  @@map(name: "posts")
+  PAYMENT_PENDING
+  PAYMENT_COMPLETE
 }

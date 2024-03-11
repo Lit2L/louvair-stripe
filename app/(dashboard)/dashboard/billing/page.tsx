@@ -37,17 +37,22 @@ export default async function BillingPage() {
       <div className='grid gap-8'>
         <Alert className='!pl-14'>
           <Icons.warning />
-          <AlertTitle>This is a demo app.</AlertTitle>
+          <AlertTitle>This is app is in demo mode.</AlertTitle>
           <AlertDescription>
-            Taxonomy app is a demo app using a Stripe test environment. You can find a list of test
-            card numbers on the{' '}
+            Louvair app is in TEST Mode using a Stripe test environment. Complete order with <br />{' '}
+            <br />
+            Test Card Number `4242 4242 4242 4242`
+            <br /> Exp. `04/24` <br />
+            CVC `242`.
+            <br />
             <a
               href='https://stripe.com/docs/testing#cards'
               target='_blank'
               rel='noreferrer'
               className='font-medium underline underline-offset-8'
             >
-              Stripe docs
+              <br />
+              See Stripe Docs
             </a>
             .
           </AlertDescription>

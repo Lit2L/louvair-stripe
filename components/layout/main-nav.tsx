@@ -9,6 +9,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Icons } from '@/components/shared/icons'
 import { MobileNav } from '@/components/layout/mobile-nav'
+import Logo from '../icons/Logo'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -38,15 +39,14 @@ export function MainNav({ items, children }: MainNavProps) {
   }, [showMobileMenu])
 
   return (
-    <div className='flex gap-6 md:gap-10'>
-      <Link href='/' className='hidden items-center space-x-2 md:flex'>
-        <Icons.logo />
-        <span className='hidden font-urban text-xl font-bold sm:inline-block'>
-          {siteConfig.name}
-        </span>
+    <div className='flex gap-16 border border-black w-full'>
+      <Link href='/' className='h-10 w-10 hidden items-center  space-x-2 md:flex'>
+        <Logo />
+        <p className='hidden text-sm font-syncopate  lg:inline-block'>{siteConfig.name}</p>
       </Link>
+
       {items?.length ? (
-        <nav className='hidden gap-6 md:flex'>
+        <nav className='hidden gap-6 md:flex border-4 border-blue-50 ml-16 '>
           {items?.map((item, index) => (
             <Link
               key={index}

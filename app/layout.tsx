@@ -11,7 +11,7 @@ import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/config/site'
 
-import { Syncopate } from 'next/font/google'
+import { Be_Vietnam_Pro, Syncopate } from 'next/font/google'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -53,7 +53,7 @@ export const metadata = {
     creator: '@li2l'
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/assets/Logo.png',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png'
   },
@@ -67,13 +67,19 @@ const syncopate = Syncopate({
   variable: '--font-syncopate'
 })
 
+const vietnam = Be_Vietnam_Pro({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal'],
+  subsets: ['latin'],
+  variable: '--font-vietnam'
+})
+
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en' suppressHydrationWarning>
       <head />
       <body className={syncopate.className}>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
-          <BurgerNav />
           <main className=''>{children}</main>
           {/* <Analytics /> */}
           <Toaster />
