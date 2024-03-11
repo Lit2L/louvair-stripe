@@ -10,6 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   Json?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+  authorId  String
+
+  author User @relation(fields: [authorId], references: [id])
+
+  @@map(name: "posts")
+}
+
 model Account {
   id                String   @id @default(cuid())
   userId            String
@@ -59,6 +73,7 @@ model User {
   stripeSubscriptionId   String?   @unique @map("stripe_subscription_id")
   stripePriceId          String?   @map("stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
+  Post                   Post[]
 
   @@map("users")
 }

@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { UserAvatar } from '@/components/user-avatar'
-import { ThemeToggleButton } from './theme-toggle-button'
+import { ThemeToggleButton } from '../theme-toggle-button'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, 'name' | 'image' | 'email'>
