@@ -119,7 +119,10 @@ const Hero: FC = () => {
   // }, [])
 
   return (
-    <div id='hero-container' className=' smooth-transition'>
+    <div
+      id='hero-container'
+      className=' smooth-transition'
+    >
       <div className='hidden sm:block p-[5vw] '>
         <p className='text-xs font-semibold '>
           Lorem ipsum dolor sit amet consectetur
@@ -128,8 +131,17 @@ const Hero: FC = () => {
         </p>
       </div>
       <div className='w-full'>
-        <div className='hero-background loading-transition' ref={backgroundWrapper}>
-          <Image fill src={HeroImage} alt=' hero' ref={backgroundImage} className='hero-image' />
+        <div
+          className='hero-background loading-transition'
+          ref={backgroundWrapper}
+        >
+          <Image
+            fill
+            src={HeroImage}
+            alt=' hero'
+            ref={backgroundImage}
+            className='hero-image'
+          />
         </div>
 
         <div className='content'>
@@ -144,10 +156,16 @@ const Hero: FC = () => {
             </div>
 
             <div className='w-full text-center '>
-              <p className='sub-header text-6xl' ref={(el) => (headings.current[1] = el!)}>
+              <p
+                className='sub-header text-6xl'
+                ref={(el) => (headings.current[1] = el!)}
+              >
                 Air
               </p>
-              <p className='sub-header' ref={(el) => (headings.current[2] = el!)}>
+              <p
+                className='sub-header'
+                ref={(el) => (headings.current[2] = el!)}
+              >
                 Ambience
               </p>
             </div>
@@ -166,7 +184,7 @@ const Hero: FC = () => {
 
           <Link
             href='/login'
-            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64')}
+            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64 ')}
           >
             Visit Store
           </Link>

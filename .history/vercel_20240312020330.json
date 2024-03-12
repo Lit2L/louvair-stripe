@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": { "distDir": "build" },
+      "buildCommands": "next build",
+      "framework": "nextjs"
+
+    }
+  ],
+  "routes": [
+    { "app": "/(.*)", "dest": "/" }
+  ]
+}
