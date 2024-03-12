@@ -4,7 +4,7 @@ import { getCurrentUser } from '@/lib/session'
 import { stripe } from '@/lib/stripe'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { BillingForm } from '@/components/forms/billing-form'
+import { BillingForm } from '@/components/billing-form'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Icons } from '@/components/shared/icons'
 import { DashboardShell } from '@/components/dashboard/shell'
@@ -45,17 +45,19 @@ export default async function BillingPage() {
           <AlertDescription>
             Louvair app is in TEST Mode using a Stripe test environment. Complete order with <br />{' '}
             <br />
-            <Card className='bg-neutral-800/50 w-[340px]'>
-              <CardHeader>
-                <CardTitle className='font-vietnam font-thin'>Test Card</CardTitle>
-              </CardHeader>
-              <CardContent className='font-vietnam font-thin text-[16px]'>
-                Card Number `4242 4242 4242 4242`
-                <CardDescription>
-                  <br /> Exp. `04/24` CVC `242`.
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <div className='w-[340px] relative h-[200px]'>
+              <Card className='bg-neutral-800/50 w-[340px]'>
+                <CardHeader>
+                  <CardTitle className='font-vietnam font-thin'>Test Card</CardTitle>
+                </CardHeader>
+                <CardContent className='font-vietnam font-thin text-[16px]'>
+                  Card Number `4242 4242 4242 4242`
+                  <CardDescription>
+                    <br /> Exp. `04/24` CVC `242`.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
             <br />
             <a
               href='https://stripe.com/docs/testing#cards'

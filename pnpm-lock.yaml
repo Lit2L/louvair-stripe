@@ -193,7 +193,7 @@ dependencies:
     version: 1.0.7(tailwindcss@3.4.1)
   ts-node:
     specifier: ^10.9.2
-    version: 10.9.2(@types/node@18.19.22)(typescript@4.7.4)
+    version: 10.9.2(@types/node@18.19.23)(typescript@4.7.4)
   vaul:
     specifier: ^0.9.0
     version: 0.9.0(@types/react-dom@18.0.6)(@types/react@18.0.15)(react-dom@18.2.0)(react@18.2.0)
@@ -213,7 +213,7 @@ devDependencies:
     version: 0.1.5
   '@types/node':
     specifier: ^18.16.0
-    version: 18.19.22
+    version: 18.19.23
   '@types/react':
     specifier: 18.0.15
     version: 18.0.15
@@ -2321,11 +2321,11 @@ packages:
   /@types/micro@7.3.7:
     resolution: {integrity: sha512-MFsX7eCj0Tg3TtphOQvANNvNtFpya+s/rYOCdV6o+DFjOQPFi2EVRbBALjbbgZTXUaJP1Q281MJiJOD40d0UxQ==}
     dependencies:
-      '@types/node': 18.19.22
+      '@types/node': 18.19.23
     dev: true
 
-  /@types/node@18.19.22:
-    resolution: {integrity: sha512-p3pDIfuMg/aXBmhkyanPshdfJuX5c5+bQjYLIikPLXAUycEogij/c50n/C+8XOA5L93cU4ZRXtn+dNQGi0IZqQ==}
+  /@types/node@18.19.23:
+    resolution: {integrity: sha512-wtE3d0OUfNKtZYAqZb8HAWGxxXsImJcPUAgZNw+dWFxO6s5tIwIjyKnY76tsTatsNCLJPkVYwUpq15D38ng9Aw==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2710,7 +2710,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001597
-      electron-to-chromium: 1.4.699
+      electron-to-chromium: 1.4.701
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -3043,8 +3043,8 @@ packages:
       semver: 7.6.0
     dev: false
 
-  /electron-to-chromium@1.4.699:
-    resolution: {integrity: sha512-I7q3BbQi6e4tJJN5CRcyvxhK0iJb34TV8eJQcgh+fR2fQ8miMgZcEInckCo1U9exDHbfz7DLDnFn8oqH/VcRKw==}
+  /electron-to-chromium@1.4.701:
+    resolution: {integrity: sha512-K3WPQ36bUOtXg/1+69bFlFOvdSm0/0bGqmsfPDLRXLanoKXdA+pIWuf/VbA9b+2CwBFuONgl4NEz4OEm+OJOKA==}
     dev: true
 
   /emoji-regex@10.3.0:
@@ -4623,7 +4623,7 @@ packages:
     dependencies:
       lilconfig: 3.1.1
       postcss: 8.4.35
-      ts-node: 10.9.2(@types/node@18.19.22)(typescript@4.7.4)
+      ts-node: 10.9.2(@types/node@18.19.23)(typescript@4.7.4)
       yaml: 2.4.1
 
   /postcss-nested@6.0.1(postcss@8.4.35):
@@ -5267,7 +5267,7 @@ packages:
     resolution: {integrity: sha512-OUA32uhNoSoM6wOodyFbV+3IBCoO140uzdXmBArQ0S88D4EbH91xl2v+Ml1sKalcFKUBadHLeHfU/p9AbsOfGw==}
     engines: {node: '>=12.*'}
     dependencies:
-      '@types/node': 18.19.22
+      '@types/node': 18.19.23
       qs: 6.12.0
     dev: false
 
@@ -5392,7 +5392,7 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /ts-node@10.9.2(@types/node@18.19.22)(typescript@4.7.4):
+  /ts-node@10.9.2(@types/node@18.19.23)(typescript@4.7.4):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -5411,7 +5411,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.19.22
+      '@types/node': 18.19.23
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3

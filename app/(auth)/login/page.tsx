@@ -7,7 +7,7 @@ import { Icons } from '@/components/shared/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { Suspense } from 'react'
 import { ChevronRight } from 'lucide-react'
-import Logo from '@/components/icons/Logo'
+import { Logo } from '@/components/icons/Logo'
 
 export const metadata: Metadata = {
   title: 'Login',

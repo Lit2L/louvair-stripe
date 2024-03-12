@@ -5,7 +5,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { Suspense } from 'react'
-import Logo from '@/components/icons/Logo'
+import { Logo } from '@/components/icons/Logo'
 import { ChevronRight } from 'lucide-react'
 
 export const metadata = {
