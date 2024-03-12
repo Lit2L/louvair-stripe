@@ -1,4 +1,7 @@
 {
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+
+{
   "builds": [
     {
       "src": "package.json",
@@ -9,4 +12,5 @@
   "routes": [
     { "src": "/(.*)", "dest": "/" }
   ]
+}
 }
